@@ -1,5 +1,6 @@
 import java.io.*;
-import java.util.Calendar;
+import java.time.DayOfWeek;
+import java.time.LocalDate;
 
 public class FindDayOfWeek {
 
@@ -15,13 +16,10 @@ public class FindDayOfWeek {
 
 
     public static String findDay(int month, int day, int year) {
-
-        Calendar calendar = Calendar.getInstance();
-        calendar.set(year, month - 1, day);
-        int dayOfWeekInt = calendar.get(Calendar.DAY_OF_WEEK);
-
-        String[] daysOfWeek = {"SUNDAY", "MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY"};
-        return daysOfWeek[dayOfWeekInt - 1];
+                LocalDate date = LocalDate.of(year, month, day);
+                DayOfWeek dayOfWeek = date.getDayOfWeek();
+                String dayOfWeekString = dayOfWeek.toString();
+                return dayOfWeekString;
     }
 
 
